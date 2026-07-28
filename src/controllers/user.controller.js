@@ -1,7 +1,7 @@
 export const registerUser = (req, res) => {
-  res.status(200).json({
-    message: "user registered !!!!!",
-  });
+  const {email,username,fullname,password} = req.body
+  console.log("email : ",email);
+  
 };
 
 //register a user 
