@@ -1,4 +1,5 @@
 import {apiErrors} from "../utils/apiErrors.js"
+export {User} from "../models/user.model.js"
 export const registerUser = (req, res) => {
   const {email,username,fullname,password} = req.body
   console.log("email : ",email);
