@@ -5,8 +5,8 @@ export const registerUser = (req, res) => {
   
 
   if(fullname === ""){
-
-  }throw new  apiErrors(400,"full name is required")
+throw new  apiErrors(400,"full name is required")
+  }
 };
 
 //register a user 
