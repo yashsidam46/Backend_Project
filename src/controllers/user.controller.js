@@ -4,9 +4,12 @@ export const registerUser = (req, res) => {
   console.log("email : ",email);
   
 
-  if(fullname === ""){
-throw new  apiErrors(400,"full name is required")
-  }
+if(
+  [fullname,email,password,username].some((field) => 
+    field?.trim() === "")
+){
+throw new apiErrors(400,"all field are require")
+}
 };
 
 //register a user 
