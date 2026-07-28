@@ -1,7 +1,12 @@
+import {apiErrors} from "../utils/apiErrors.js"
 export const registerUser = (req, res) => {
   const {email,username,fullname,password} = req.body
   console.log("email : ",email);
   
+
+  if(fullname === ""){
+
+  }throw new  apiErrors(400,"full name is required")
 };
 
 //register a user 
