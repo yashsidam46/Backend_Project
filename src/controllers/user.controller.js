@@ -29,6 +29,22 @@ if(!avatarLocalPth){
   throw new apiErrors(400,"avatar file is required")
 }
 
+const avatar = await uploadAtCloudinary(avatarLocalPth) 
+const coverimage = await uploadAtCloudinary(CoverImageLocalPath)
+
+if(!avatar){
+  throw new apiErrors(409,"avatar is required")
+}
+
+User.create({
+  fullname,
+  avatar : avatar.url,
+  coverimage : coverimage?.url || "",
+  email,
+  password,
+  username : username.toLowerCase()
+})
+
 };
 
 //register a user 
