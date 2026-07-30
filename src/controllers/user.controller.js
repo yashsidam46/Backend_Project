@@ -1,6 +1,8 @@
 import {apiErrors} from "../utils/apiErrors.js"
 export {User} from "../models/user.model.js"
 import {uploadAtCloudinary} from "../utils/cloudinary.js"
+import { User } from "./user.controller.js";
+import { ApiResponce } from "../utils/Apiresponce.js";
 export const registerUser = (req, res) => {
   const {email,username,fullname,password} = req.body
   console.log("email : ",email);
@@ -36,7 +38,7 @@ if(!avatar){
   throw new apiErrors(409,"avatar is required")
 }
 
-User.create({
+const user = User.create({
   fullname,
   avatar : avatar.url,
   coverimage : coverimage?.url || "",
@@ -44,6 +46,19 @@ User.create({
   password,
   username : username.toLowerCase()
 })
+
+const CreatedUser = await User.findById(user._id).select(
+  "-password -refreshToken"
+)
+
+if(!CreatedUser){
+  throw new apiErrors(500,"something went wrong while  registrering user")
+}
+
+
+return res.status(201).json(
+  new ApiResponse(200,CreatedUser,"user created successfully")
+)
 
 };
 

@@ -44,3 +44,5 @@ Here is the ultimate status code cheat sheet, stripped down to the bare essentia
 
 504 (Gateway Timeout): Server took too long to respond.
 */
+
+export {ApiResponce}
