@@ -5,11 +5,12 @@
 //dotenv.config()
 
 import dotenv from "dotenv";
+dotenv.config({ path: "./.env", });
 import mongoose from "mongoose";
 import { DB_NAME } from "./constants.js";
 import { app } from "./app.js"; // ✅ Import the configured app from app.js!
 
-dotenv.config({ path: "./.env" });
+
 
 (async () => {
     try {
